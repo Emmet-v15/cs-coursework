@@ -1,0 +1,44 @@
+
+Structure of agile approach:
+
+STAGE - The part of the program being worked on.
+DATE - [24/01/2023 at 19:00]
+
+# Commented code snippet.
+
+DESCRIPTION - Evaluate additions / changes and test to ensure code works.
+TESTING - 
+REMEDIAL ACTION - If it fails
+TEST SAME TEST - make sure remedial action has worked
+
+MEDIA - Working example, Screenshot / Video.
+
+FEEDBACK - Stakeholder gives opinions.
+
+
+Example:
+
+STAGE - Main menu buttons
+DATE - [24/01/2023]
+
+# commented code snippet of the button class
+https://ibb.co/fDZ26pz
+
+DESCRIPTION:
+
+MEDIA:
+https://ibb.co/bssTjkP
+
+FEEDBACK - 	Stakeholder 1 says button's text is not centered.
+
+				- Could incoroprorate the text rendering into the button class
+					- This would be more modular and easier to use,
+						could create a "TextRectButton" class
+						
+			Stakeholder 2 says button colour is obnoxious to look at.
+			
+				- Could be fixed by using less saturated colors
+					could use a color picker to get a rgb value that looks better
+				- Use complimentary colors and use correct
+					font colors for accessibility
+					
