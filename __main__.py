@@ -5,7 +5,7 @@ from pygame.locals import *
 
 from engine import BaseWindow, ScalableRect
 from rockets import BaseRocket
-from menus import MainMenu
+from menus import MainMenu, PlayMenu
 import drawinglib as dl
 
 pygame.init()
@@ -18,6 +18,7 @@ class Game(BaseWindow):
             pygame.Rect(400 - 25, 400, 50, 90), (255, 255, 255), (400, 400), 1
         )
         self.mainMenu = MainMenu(self.screen.get_rect(), self.setGameState)
+        self.playMenu = PlayMenu(self.screen.get_rect(), self.setGameState)
         self.state = "menu"
 
     def update(self):
@@ -28,7 +29,6 @@ class Game(BaseWindow):
                 # self.mainMenu.update(self.dt)  # updating menu is not required
                 pass
             case "play":
-
                 pass
             case "help":
                 pass
@@ -50,6 +50,7 @@ class Game(BaseWindow):
             case "menu":
                 self.mainMenu.draw(self.screen)  # draw menu
             case "play":
+                self.playMenu.draw(self.screen)
                 pass
             case "help":
                 pass

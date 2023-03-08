@@ -39,6 +39,12 @@ class MainMenu:
         grayButtonColors = Colors((100, 100, 100), (50, 50, 50), (150, 150, 150))
         redButtonColors = Colors((200, 50, 50), (200, 0, 0), (200, 100, 100))
 
+        # write Rocket Agency on the top right of the screen in big text
+
+        self.mainMenuText = ColoredText("Rocket Agency", 75, fontColors)
+        self.mainMenuTextRect = self.mainMenuText.idle.get_rect()
+        self.mainMenuTextRect.center = (rect.width / 2 + 100, 75)
+
         # create stars
         self.stars = StarryBackground(rect)
 
@@ -89,6 +95,79 @@ class MainMenu:
 
         # draw stars
         self.stars.draw(screen)
+
+        # draw text
+        screen.blit(self.mainMenuText.idle, self.mainMenuTextRect)
+
+        # draw buttons
+        for button in self.buttons:
+            button.draw(screen)
+
+
+class PlayMenu:
+    def __init__(self, rect, gameStateCallback):
+
+        fontColors = Colors((255, 255, 255), (255, 255, 255), (0, 0, 0))
+        self.playMenuText = ColoredText("Building Selection", 75, fontColors)
+        self.playMenuTextRect = self.playMenuText.idle.get_rect()
+        self.playMenuTextRect.center = (rect.width / 2 + 100, 75)
+
+        grayButtonColors = Colors((100, 100, 100), (50, 50, 50), (150, 150, 150))
+
+        # create buttons in the constructor and not in the draw function to avoid recreating them every frame
+        # Tracking Station, Contracts Menu, Hire Crew, Vehicle Assembly Building, Tech Tree
+        self.buttons = []
+        self.buttons.append(
+            Button(
+                pygame.Rect(0, 60, 200, 80),
+                grayButtonColors,
+                ColoredText("Tracking Station", 30, fontColors),
+                lambda: gameStateCallback("trackingStation"),
+            )
+        )
+        self.buttons.append(
+            Button(
+                pygame.Rect(0, 200, 200, 80),
+                grayButtonColors,
+                ColoredText("Contracts Menu", 30, fontColors),
+                lambda: gameStateCallback("contractsMenu"),
+            )
+        )
+        self.buttons.append(
+            Button(
+                pygame.Rect(0, 340, 200, 80),
+                grayButtonColors,
+                ColoredText("Hire Crew", 30, fontColors),
+                lambda: gameStateCallback("hireCrew"),
+            )
+        )
+        self.buttons.append(
+            Button(
+                pygame.Rect(0, 480, 200, 80),
+                grayButtonColors,
+                ColoredText("Assembly", 30, fontColors),
+                lambda: gameStateCallback("assembly"),
+            )
+        )
+        self.buttons.append(
+            Button(
+                pygame.Rect(rect.width - 200, 480, 200, 80),
+                grayButtonColors,
+                ColoredText("Tech Tree", 30, fontColors),
+                lambda: gameStateCallback("techTree"),
+            )
+        )
+        self.buttons.append(
+            Button(
+                pygame.Rect(0, 620, 200, 80),
+                grayButtonColors,
+                ColoredText("Back", 30, fontColors),
+                lambda: gameStateCallback("menu"),
+            )
+        )
+
+    def draw(self, screen):
+        screen.blit(self.playMenuText.idle, self.playMenuTextRect)
 
         # draw buttons
         for button in self.buttons:
